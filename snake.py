@@ -19,22 +19,19 @@ class Snake:
         for position in starting_positions:
             self.add_segment(position)
 
-        # for i in range(self.extend):
-        #     self.add_segment()
-
     def add_segment(self, position):
         snake = t.Turtle("square")
         snake.color("white")
         snake.penup()
         snake.goto(position)
         self.all_snake.append(snake)
-        # X = 0
-        # snake = t.Turtle("square")
-        # snake.color("white")
-        # snake.penup()
-        # snake.goto(X, 0)
-        # self.all_snake.append(snake)
-        # X -= 20
+
+    def reset(self):
+        for snake in self.all_snake:
+            snake.goto(1000,1000)
+        self.all_snake.clear()
+        self.create_snake()
+        self.head = self.all_snake[0]
 
     def grow(self):
         self.add_segment(self.all_snake[-1].position())
